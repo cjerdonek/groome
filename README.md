@@ -4,10 +4,12 @@ Groom
 [Groom](https://github.com/cjerdonek/groom) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for project templates.
 
-A groom template is just a directory of files.  Given a groom template and
-a [yaml](http://yaml.org/) or [json](http://www.json.org/) configuration file,
-a groom implementation creates a project directory from that directory by
-treating the files and file names as Mustache templates and using the
+A groom template is just a directory of files.
+
+Given a groom template and a [yaml](http://yaml.org/) or
+[json](http://www.json.org/) configuration file,
+a groom implementation creates a project directory by treating all files
+and file names in the directory as Mustache templates and using the
 configuration file as the initial context.
 
 
@@ -35,7 +37,11 @@ We suggest that groom templates in GitHub be stored in repositories
 with names prefixed with `groom-` (for example `groom-python27-script`).
 This will make template discovery easier.
 
-In addition, Groom templates can be listed on the project [wiki](https://github.com/cjerdonek/groom/wiki.)
+In addition, Groom templates can be listed on the project
+[wiki](https://github.com/cjerdonek/groom/wiki).
+
+Each groom templates should provide a sample configuration file that users
+can modify.
 
 
 Implementations
