@@ -4,7 +4,7 @@ Groom
 [Groom](https://github.com/cjerdonek/groom) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for project templates.
 
-A groom template is just a directory of files.
+A groom template is just a directory of files (and subdirectories).
 
 Given a groom template and a [yaml](http://yaml.org/) or
 [json](http://www.json.org/) configuration file,
@@ -20,13 +20,13 @@ Specifically,
 
 1.  All file names and directory names are treated as Mustache templates.
     For example, `{{project}}.py` might become `molt.py`.
-2.  If a file name ends in `.mustache`, the contents of that file are treated
-    as a Mustache template and the trailing `.mustache` stripped from the
-    file name.
-3.  The previous rule has an exception to leave the contents of a `.mustache`
-    file alone.  If a file name ends in `.skip.mustache`, the file contents
-    remain unchanged, and the trailing `.skip.mustache` is changed to
-    `.mustache`.
+2.  If a file name ends in `.mustache`, the trailing `.mustache` is stripped
+    from the file name and the contents of that file are treated as a
+    Mustache template.
+3.  To leave a Mustache file alone, end the file name in `.skip.mustache`.
+    For such files, the file contents remain unchanged, and the trailing
+    `.skip.mustache` is changed to `.mustache`.  This is the only exception
+    to the previous rule.
 4.  If a file name does not end in `.mustache`, its contents remain the same.
 
 
@@ -40,8 +40,8 @@ This will make template discovery easier.
 In addition, Groom templates can be listed on the project
 [wiki](https://github.com/cjerdonek/groom/wiki).
 
-Each groom templates should provide a sample configuration file that users
-can modify.
+Each groom template should supply a sample configuration file that users
+can modify as a starting point.
 
 
 Implementations
