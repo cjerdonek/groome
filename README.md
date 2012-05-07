@@ -35,7 +35,7 @@ Templates
 ---------
 
 We suggest that groom templates in GitHub be stored in repositories
-with names prefixed with `groom-` (for example `groom-python27-script`).
+with names prefixed by `groom-` (for example `groom-python27-script`).
 This will make template discovery easier.
 
 In addition, Groom templates can be listed on the project
@@ -50,7 +50,8 @@ Implementations
 
 Groom implementations can also be listed on the wiki.
 
-A Python implementation is under construction.
+[Molt](https://github.com/cjerdonek/molt), a Python implementation, is under
+construction and should be ready shortly.
 
 
 Author
