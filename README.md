@@ -1,7 +1,7 @@
 Groom
 =====
 
-[Groom](https://github.com/cjerdonek/groom) is a dead-simple,
+[Groom](http://cjerdonek.github.com/groom/) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for project templates.
 
 A groom template is just a directory of files (and subdirectories).
