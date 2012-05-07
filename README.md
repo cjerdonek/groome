@@ -21,14 +21,13 @@ Specifically,
 1.  All file names and directory names are treated as Mustache templates.
     For example, `{{project}}.py` might become `molt.py`.
 2.  If a file name ends in `.mustache`, the trailing `.mustache` is stripped
-    from the file name and the contents of that file are treated as a
-    Mustache template.
+    from the file name and the file contents treated as a Mustache template.
 3.  To leave a Mustache file alone, end the file name in `.skip.mustache`.
     For such files, the file contents remain unchanged, and the trailing
     `.skip.mustache` is changed to `.mustache`.  This is the only exception
     to the previous rule.
-4.  If a file name does not end in `.mustache`, it is not treated as a
-    Mustache template.
+4.  If a file name does not end in `.mustache`, the contents of the file
+    are not treated as a Mustache template.
 
 
 Templates
