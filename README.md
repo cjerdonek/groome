@@ -27,7 +27,8 @@ Specifically,
     For such files, the file contents remain unchanged, and the trailing
     `.skip.mustache` is changed to `.mustache`.  This is the only exception
     to the previous rule.
-4.  If a file name does not end in `.mustache`, its contents remain the same.
+4.  If a file name does not end in `.mustache`, it is not treated as a
+    Mustache template.
 
 
 Templates
