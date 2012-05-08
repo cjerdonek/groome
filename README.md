@@ -6,11 +6,18 @@ Groom
 
 A groom template is just a directory of files (and subdirectories).
 
-Given a groom template and a [yaml](http://yaml.org/) or
-[json](http://www.json.org/) configuration file,
-a groom implementation creates a project directory by treating all files
-and file names in the directory as Mustache templates and using the
-configuration file as the initial context.
+A groom implementation creates a project directory by treating both the
+names of files in the directory and their contents as Mustache templates.
+A [yaml](http://yaml.org/) or [json](http://www.json.org/) configuration
+file provides the initial context.
+
+
+Example
+-------
+
+TODO: mention partials directory.
+TODO: mention context key.
+TODO: file determination should be made before rendering file name.
 
 
 Rules
@@ -42,6 +49,8 @@ In addition, Groom templates can be listed on the project
 
 Each groom template should supply a sample configuration file that users
 can modify as a starting point.
+
+TODO: suggested name for sample configuration file?
 
 
 Implementations
