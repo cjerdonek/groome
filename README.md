@@ -4,19 +4,19 @@ Groom
 [Groom](http://cjerdonek.github.com/groom/) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for project templates.
 
-A groom template is just a directory of files (and subdirectories) containing
+A Groom template is just a directory of files (and subdirectories) containing
 a project structure, and an optional directory of Mustache partials.
 
-A groom implementation creates a new project by treating both the name and
-contents of each file in the template directory as a Mustache templates.
-A [yaml](http://yaml.org/) or [json](http://www.json.org/) configuration
-file provides the context to render each Mustache template.
+A Groom implementation creates a new project by treating both the name and
+contents of each file in the template directory as a Mustache template.
+A single [yaml](http://yaml.org/) or [json](http://www.json.org/) configuration
+file provides the context used to render every Mustache template.
 
 
 Example
 -------
 
-For example, the following groom template--
+For example, the following Groom template--
 
 	partials/
 	    copyright.mustache
@@ -26,7 +26,7 @@ For example, the following groom template--
 		    {{>copyright}}
 			print "Running {{project}}..."
 
-with the following context--
+with context--
 
 	{
         "project": "awesomeness",
@@ -34,7 +34,7 @@ with the following context--
         "year": 2012
 	}
 
-would yield--
+yields--
 
 	output/
 		awesomeness.py
@@ -44,7 +44,7 @@ would yield--
 Rules
 -----
 
-Specifically, a groom template directory is rendered as follows:
+The rules for rendering the contents of a Groom template directory are--
 
 1.  All file names and directory names are treated as Mustache templates,
     after any pre-processing of the name described below.
@@ -61,15 +61,20 @@ Specifically, a groom template directory is rendered as follows:
 Templates
 ---------
 
-We suggest that groom templates in GitHub be stored in repositories
-with names prefixed by `groom-` (for example `groom-python27-script`).
-This will make template discovery easier.
+If you make a Groom template for others to use, you can list it on the Groom
+project [wiki](https://github.com/cjerdonek/groom/wiki).
 
-In addition, Groom templates can be listed on the project
-[wiki](https://github.com/cjerdonek/groom/wiki).
+To simplify Groom template distribution, use, and discovery, we suggest that
+Groom template projects follow these conventions:
 
-Each groom template should supply a sample configuration file that users
-can modify as a starting point.
+* Store groom templates in repositories with names prefixed by `groom-`
+  (for example `groom-python2and3-script`).
+* Name the partials directory `partials`.
+* Provide an example configuration file named `sample.json` or `sample.yaml`
+  that contains a name-value collection.
+* The rendering context should be the value of the key `context` in the
+  configuration file.  This allows for the inclusion of additional metadata
+  in the configuration file, without risk of key collisions with context data.
 
 
 Implementations
