@@ -1,4 +1,4 @@
 TODO
 ====
 
-* add image.
+* improve image.

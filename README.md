@@ -1,6 +1,8 @@
 Groom
 =====
 
+![](images/groom.png "mustache grooming")
+
 [Groom](http://cjerdonek.github.com/groom/) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for project templates.
 
@@ -91,3 +93,5 @@ Author
 
 Groom is authored by [Chris Jerdonek](https://github.com/cjerdonek), the
 current [Pystache](https://github.com/defunkt/pystache) maintainer.
+
+Copyright (C) 2012 Chris Jerdonek.  All rights reserved.
