@@ -1,7 +1,7 @@
 Groom
 =====
 
-![](images/groom.png "mustache grooming")
+![](http://github.com/cjerdonek/groom/raw/development/images/groom.png "mustache grooming")
 
 [Groom](http://cjerdonek.github.com/groom/) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for project templates.
