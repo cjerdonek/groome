@@ -1,5 +1,5 @@
 {
-    "description": "A file without a template extension should be copied as is.",
+    "description": "A template file without a template extension.",
     "context": {
     }
 }

@@ -1,0 +1,6 @@
+{
+    "description": "A template file with a template extension.",
+    "context": {
+        "bar": "baz"
+    }
+}
