@@ -87,8 +87,8 @@ Groom implementations can also be listed on the wiki.
 [Molt](https://github.com/cjerdonek/molt), a Python implementation, is under
 construction and should be ready shortly.
 
-To assist implementations, the project has a
-[`tests` directory](https://github.com/cjerdonek/groom/tree/master/tests).
+To assist implementations, the project has
+[a `tests` directory](https://github.com/cjerdonek/groom/tree/master/tests).
 The directory contains a number of test cases to check various isolated
 aspects of the rules above.  Implementations can include this project's
 Git repository as a [submodule](http://help.github.com/submodules/)
