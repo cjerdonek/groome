@@ -1,0 +1,6 @@
+{
+    "description": "A file name that contains a tag.",
+    "context": {
+        "foo": "bar"
+    }
+}

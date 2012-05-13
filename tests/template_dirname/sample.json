@@ -1,0 +1,6 @@
+{
+    "description": "A directory name that contains a tag.",
+    "context": {
+        "foo": "baz"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "description": "A template file ending in .skip and the template extension.",
+    "context": {
+        "bar": "baz"
+    }
+}

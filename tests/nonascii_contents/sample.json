@@ -1,0 +1,6 @@
+{
+    "description": "A file containing a nonascii character.",
+    "context": {
+        "bar": "abc"
+    }
+}

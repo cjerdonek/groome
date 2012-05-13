@@ -1,0 +1,6 @@
+{
+    "description": "A tag value containing a nonascii character.",
+    "context": {
+        "cdé": "bar"
+    }
+}
