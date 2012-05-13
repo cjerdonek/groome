@@ -1,0 +1,6 @@
+{
+    "description": "A file name with a template extension, but only after rendering.",
+    "context": {
+        "foo": "baz.mustache"
+    }
+}
