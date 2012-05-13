@@ -57,7 +57,7 @@ The rules for rendering the contents of a Groom template directory are--
     changed to `.mustache` and the file contents are left unchanged.  This is
     the only exception to the previous rule.
 4.  If a file name does not end in `.mustache`, the contents of the file
-    are not treated as a Mustache template.
+    are copied as is and not treated as a Mustache template.
 
 
 Templates
