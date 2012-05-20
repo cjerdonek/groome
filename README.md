@@ -18,12 +18,13 @@ file provides the context used to render every Mustache template.
 Example
 -------
 
-For example, the following Groom template--
+For example, the following Groom template (in the directory
+[tests/demo](https://github.com/cjerdonek/groom/tree/master/tests/demo))--
 
 	partials/
 	    copyright.mustache
 			# Copyright (C) {{year}} {{author}}.
-	template/
+	project/
 		{{project}}.py.mustache
 		    {{>copyright}}
 			print "Running {{project}}..."
@@ -71,10 +72,11 @@ Groom template projects follow these conventions:
 
 * Store groom templates in repositories with names prefixed by `groom-`
   (for example `groom-python2and3-script`).
-* Name the partials directory `partials`.
+* Name the project structure directory `project` and the partials
+  directory `partials`.
 * Provide an example configuration file named `sample.json` or `sample.yaml`
   that contains a name-value collection.
-* The rendering context should be the value of the key `context` in the
+* The sample context should be the value of the key `context` in the
   configuration file.  This allows for the inclusion of additional metadata
   in the configuration file, without risk of key collisions with context data.
 
