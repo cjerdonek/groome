@@ -55,7 +55,7 @@ the template above yields--
             echo "Running awesomeness..."
 
 This example can be found in the
-[tests/demo](https://github.com/cjerdonek/groom/tree/master/tests/demo))
+[tests/demo](https://github.com/cjerdonek/groom/tree/master/tests/demo)
 directory of this repository.
 
 
