@@ -11,7 +11,7 @@ a project structure, an optional directory of Mustache partials, and
 an optional directory of lambda shell scripts.
 
 A Groom implementation creates a new project by treating both the name and
-contents of each file in the template directory as a Mustache template.
+contents of each file in the project directory as a Mustache template.
 A single [yaml](http://yaml.org/) or [json](http://www.json.org/)
 configuration file provides the context used to render every Mustache
 template (together with any lambdas).
