@@ -128,7 +128,7 @@ Implementations
 
 Groom implementations can also be listed on the wiki.
 
-[Molt](https://github.com/cjerdonek/molt), a Python implementation, is under
+[Molt](http://cjerdonek.github.com/molt/), a Python implementation, is under
 construction and should be ready shortly.
 
 To assist implementations, this project has
