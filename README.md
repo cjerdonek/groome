@@ -17,10 +17,36 @@ configuration file provides the context used to render every Mustache
 template (together with any lambdas).
 
 
-Example
--------
+Easy Example
+------------
 
-Here is an example with both partials and lambdas (again, lambdas
+Here is a "hello world" example.  The Groom template--
+
+    project/
+        {{project}}.sh.mustache
+            echo "{{project}}, world"
+
+with context--
+
+    {
+        "project": "hello"
+    }
+
+yields--
+
+    output/
+        hello.sh
+            echo "hello, world"
+
+This example can be found in the
+[tests/example_easy](https://github.com/cjerdonek/groom/tree/master/tests/example_easy)
+directory of this repository.
+
+
+Advanced Example
+----------------
+
+Here is a harder example with both partials and lambdas (again, lambdas
 and partials are both optional).
 
     lambdas/
@@ -54,9 +80,8 @@ the template above yields--
             # Copyright (C) 2012 Mustachioed Maven.
             echo "Running awesomeness..."
 
-This example can be found in the
-[tests/demo](https://github.com/cjerdonek/groom/tree/master/tests/demo)
-directory of this repository.
+Look in the [tests/example_hard](https://github.com/cjerdonek/groom/tree/master/tests/example_hard)
+directory for this example.
 
 
 Rules

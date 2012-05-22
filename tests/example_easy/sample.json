@@ -1,0 +1,6 @@
+{
+    "description": "The 'hello world' example in the Groom README",
+    "context": {
+        "project": "hello"
+    }
+}
