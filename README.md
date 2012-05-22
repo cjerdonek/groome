@@ -7,47 +7,61 @@ Groom
 [Mustache](http://mustache.github.com/)-based standard for project templates.
 
 A Groom template is just a directory of files (and subdirectories) containing
-a project structure, and an optional directory of Mustache partials.
+a project structure, an optional directory of Mustache partials, and
+an optional directory of lambda shell scripts.
 
 A Groom implementation creates a new project by treating both the name and
 contents of each file in the template directory as a Mustache template.
 A single [yaml](http://yaml.org/) or [json](http://www.json.org/) configuration
-file provides the context used to render every Mustache template.
+file provides the context used to render every Mustache template (together
+with any lambdas).
 
 
 Example
 -------
 
-For example, the following Groom template (in the directory
-[tests/demo](https://github.com/cjerdonek/groom/tree/master/tests/demo))--
+Here is an example with both partials and lambdas (again, lambdas
+are optional).
 
-	partials/
-	    copyright.mustache
-			# Copyright (C) {{year}} {{author}}.
-	project/
-		{{project}}.py.mustache
-		    {{>copyright}}
-			print "Running {{project}}..."
+    lambdas/
+        hash_comment.sh
+            #!/bin/bash
+            while read line; do echo "# $line"; done
+    partials/
+        copyright.mustache
+            Copyright (C) {{year}} {{author}}.
+    project/
+        {{project}}.sh.mustache
+            #!/bin/bash
+            {{#hash_comment}}
+            {{>copyright}}
+            {{/hash_comment}}
+            echo "Running {{project}}..."
 
-with context--
+Given context--
 
-	{
+    {
         "project": "awesomeness",
         "author": "Mustachioed Maven",
         "year": 2012
-	}
+    }
 
-yields--
+the template yields--
 
-	output/
-		awesomeness.py
-			# Copyright (C) 2012 Mustachioed Maven.
-			print "Running awesomeness..."
+    output/
+        awesomeness.sh
+            #!/bin/bash
+            # Copyright (C) 2012 Mustachioed Maven.
+            echo "Running awesomeness..."
+
+This example can be found in the directory
+[tests/demo](https://github.com/cjerdonek/groom/tree/master/tests/demo)).
+
 
 Rules
 -----
 
-The rules for rendering the contents of a Groom template directory are--
+The rules for rendering the project directory of a Groom template are--
 
 1.  All file names and directory names are treated as Mustache templates,
     after any pre-processing of the name described below.
@@ -72,13 +86,15 @@ Groom template projects follow these conventions:
 
 * Store groom templates in repositories with names prefixed by `groom-`
   (for example `groom-python2and3-script`).
-* Name the project structure directory `project` and the partials
-  directory `partials`.
+* Name the project structure directory `project`, the partials
+  directory `partials`, and the lambda directory `lambdas`.
 * Provide an example configuration file named `sample.json` or `sample.yaml`
   that contains a name-value collection.
 * The sample context should be the value of the key `context` in the
   configuration file.  This allows for the inclusion of additional metadata
   in the configuration file, without risk of key collisions with context data.
+* Templates should reference lambdas by using the file name without
+  the extension.
 
 
 Implementations
@@ -94,7 +110,7 @@ To assist implementations, the project has
 The directory contains a number of test cases to check various isolated
 aspects of the rules above.  Implementations can include this project's
 Git repository as a [submodule](http://help.github.com/submodules/)
-to run these tests more easily as part of an implementation's test harness.
+to run these tests as part of a test harness.
 
 The test cases in the `tests` directory do not attempt to thoroughly test
 the Mustache implementation underlying a Groom implementation.  For that
