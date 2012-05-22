@@ -12,16 +12,16 @@ an optional directory of lambda shell scripts.
 
 A Groom implementation creates a new project by treating both the name and
 contents of each file in the template directory as a Mustache template.
-A single [yaml](http://yaml.org/) or [json](http://www.json.org/) configuration
-file provides the context used to render every Mustache template (together
-with any lambdas).
+A single [yaml](http://yaml.org/) or [json](http://www.json.org/)
+configuration file provides the context used to render every Mustache
+template (together with any lambdas).
 
 
 Example
 -------
 
 Here is an example with both partials and lambdas (again, lambdas
-are optional).
+and partials are both optional).
 
     lambdas/
         hash_comment.sh
@@ -46,7 +46,7 @@ Given context--
         "year": 2012
     }
 
-the template yields--
+the template above yields--
 
     output/
         awesomeness.sh
@@ -54,8 +54,9 @@ the template yields--
             # Copyright (C) 2012 Mustachioed Maven.
             echo "Running awesomeness..."
 
-This example can be found in the directory
-[tests/demo](https://github.com/cjerdonek/groom/tree/master/tests/demo)).
+This example can be found in the
+[tests/demo](https://github.com/cjerdonek/groom/tree/master/tests/demo))
+directory of this repository.
 
 
 Rules
@@ -105,10 +106,10 @@ Groom implementations can also be listed on the wiki.
 [Molt](https://github.com/cjerdonek/molt), a Python implementation, is under
 construction and should be ready shortly.
 
-To assist implementations, the project has
+To assist implementations, this project has
 [a `tests` directory](https://github.com/cjerdonek/groom/tree/master/tests).
-The directory contains a number of test cases to check various isolated
-aspects of the rules above.  Implementations can include this project's
+The directory contains basic test cases to check isolated aspects
+of the rules above.  Implementations can include this project's
 Git repository as a [submodule](http://help.github.com/submodules/)
 to run these tests as part of a test harness.
 
