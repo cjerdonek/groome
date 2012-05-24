@@ -4,7 +4,8 @@ Groom
 ![](http://github.com/cjerdonek/groom/raw/master/images/groom.png "mustache grooming")
 
 [Groom](http://cjerdonek.github.com/groom/) is a dead-simple,
-[Mustache](http://mustache.github.com/)-based standard for project templates.
+[Mustache](http://mustache.github.com/)-based standard for language-agnostic
+project templates.
 
 A Groom template is just a directory of files (and subdirectories) containing
 a project structure, an optional directory of Mustache partials, and
@@ -46,8 +47,8 @@ directory of this repository.
 Advanced Example
 ----------------
 
-Here is a harder example with both partials and lambdas (again, lambdas
-and partials are both optional).
+Here is an "advanced" example that contains both partials and lambdas
+(again, lambdas and partials are both optional).
 
     lambdas/
         hash_comment.sh
@@ -64,7 +65,7 @@ and partials are both optional).
             {{/hash_comment}}
             echo "Running {{project}}..."
 
-Given context--
+With context--
 
     {
         "project": "awesomeness",
@@ -80,8 +81,8 @@ the template above yields--
             # Copyright (C) 2012 Mustachioed Maven.
             echo "Running awesomeness..."
 
-Look in the [tests/example_hard](https://github.com/cjerdonek/groom/tree/master/tests/example_hard)
-directory for this example.
+The [tests/example_hard](https://github.com/cjerdonek/groom/tree/master/tests/example_hard)
+directory contains this example.
 
 
 Rules
