@@ -105,8 +105,9 @@ The rules for rendering the project directory of a Groom template are--
 5.  Any lambda scripts provided should be added to the initial rendering
     context, using the file name without the extension as the corresponding
     context key.
-6.  All lambdas coming from lambda scripts should be considered unary,
-    with `stdin` and `stdout` used for input and output.
+6.  Input and output should be passed to all lambdas as UTF-8 strings
+    via `stdin` and `stdout`.  All lambdas used for sections should be
+    treated as unary.
 
 
 Templates
