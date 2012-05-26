@@ -102,10 +102,10 @@ The rules for rendering the project directory of a Groom template are--
     the only exception to the previous rule.
 4.  If a file name does not end in `.mustache`, the contents of the file
     are copied as is and not treated as a Mustache template.
-5.  Scripts in the lambda directory should be added to the initial rendering
+5.  Any lambda scripts provided should be added to the initial rendering
     context, using the file name without the extension as the corresponding
     context key.
-6.  All lambdas coming from the lambda directory should be considered unary,
+6.  All lambdas coming from lambda scripts should be considered unary,
     with `stdin` and `stdout` used for input and output.
 
 
