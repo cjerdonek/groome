@@ -1,5 +1,5 @@
 {
-    "description": "A template file containing a lambda section value.",
+    "description": "A template file with a lambda as a section value.",
     "context": {
     }
 }
