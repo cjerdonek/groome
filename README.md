@@ -17,6 +17,10 @@ A single [yaml](http://yaml.org/) or [json](http://www.json.org/)
 configuration file provides the context used to render each Mustache
 template (together with any lambdas).
 
+We encourage you to share your best-practice project structures with others
+as Groom templates.  Comments and suggestions on Groom are welcome on the
+project's GitHub [issues page](https://github.com/cjerdonek/groom/issues).
+
 
 Easy Example
 ------------
@@ -100,28 +104,34 @@ The rules for rendering the project directory of a Groom template are--
     the only exception to the previous rule.
 4.  If a file name does not end in `.mustache`, the contents of the file
     are copied as is and not treated as a Mustache template.
+5.  Scripts in the lambda directory should be added to the initial rendering
+    context, using the file name without the extension as the corresponding
+    context key.
+6.  All lambdas coming from the lambda directory should be considered unary,
+    with `stdin` and `stdout` used for input and output.
 
 
 Templates
 ---------
 
-If you make a Groom template for others to use, you can list it on the Groom
-project [wiki](https://github.com/cjerdonek/groom/wiki).
+If you make a Groom template for others to download or fork, you can list it
+on the Groom project [wiki](https://github.com/cjerdonek/groom/wiki).
 
 To simplify Groom template distribution, use, and discovery, we suggest that
 Groom template projects follow these conventions:
 
 * Store groom templates in repositories with names prefixed by `groom-`
   (for example `groom-python2and3-script`).
-* Name the project structure directory `project`, the partials
-  directory `partials`, and the lambda directory `lambdas`.
-* Provide an example configuration file named `sample.json` or `sample.yaml`
-  that contains a name-value collection.
-* The sample context should be the value of the key `context` in the
-  configuration file.  This allows for the inclusion of additional metadata
-  in the configuration file, without risk of key collisions with context data.
-* Templates should reference lambdas by using the file name without
-  the extension.
+* Name the project structure directory `project`, the partials directory
+  `partials`, and the lambda directory `lambdas`.
+* For documentation purposes, provide a sample context by providing a
+  configuration file named `sample.json` or `sample.yaml`.  The file should
+  contain a name-value collection with the sample context as the value of
+  the key `context`.  This allows additional metadata to be included in
+  the configuration file, without risk of key collisions with context data.
+* Rendering the template with the sample context should provide an
+  application that is "runnable" out of the box (for testing and
+  demonstration purposes).
 
 
 Implementations
@@ -132,9 +142,9 @@ Groom implementations can also be listed on the wiki.
 [Molt](http://cjerdonek.github.com/molt/), a Python implementation, is under
 construction and should be ready shortly.
 
-To assist implementations, this project has
-[a `tests` directory](https://github.com/cjerdonek/groom/tree/master/tests).
-The directory contains basic test cases to check isolated aspects
+To assist implementations, this project has a
+[`tests` directory](https://github.com/cjerdonek/groom/tree/master/tests).
+This directory contains basic test cases to check isolated aspects
 of the rules above.  Implementations can include this project's
 Git repository as a [submodule](http://help.github.com/submodules/)
 to run these tests as part of a test harness.
@@ -147,8 +157,8 @@ we recommend the [Mustache spec](https://github.com/mustache/spec).
 Author
 ------
 
-Groom is authored by [Chris Jerdonek](https://github.com/cjerdonek), the
-current [Pystache](https://github.com/defunkt/pystache) maintainer.
+Groom is authored by [Chris Jerdonek](https://github.com/cjerdonek).  Chris is
+also the current [Pystache](https://github.com/defunkt/pystache) maintainer.
 
 
 Copyright
