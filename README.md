@@ -33,9 +33,7 @@ Here is a "hello world" example.  The Groom template--
 
 with context--
 
-    {
-        "project": "hello"
-    }
+    { "project": "hello" }
 
 yields--
 
