@@ -53,6 +53,10 @@ Here is an "advanced" example that contains both partials and lambdas
 (again, lambdas and partials are both optional).
 
     lambdas/
+        now.sh
+            #!/bin/bash
+            # The -n suppresses the trailing newline.
+            echo -n $(date)
         hash_comment.sh
             #!/bin/bash
             while read line; do echo "# $line"; done
@@ -63,6 +67,7 @@ Here is an "advanced" example that contains both partials and lambdas
         {{project}}.sh.mustache
             #!/bin/bash
             {{#hash_comment}}
+            Project auto-generated at: {{now}}
             {{>copyright}}
             {{/hash_comment}}
             echo "Running {{project}}..."
@@ -80,6 +85,7 @@ the template above yields--
     output/
         awesomeness.sh
             #!/bin/bash
+            # Project auto-generated at: Sun May 27 11:24:21 PDT 2012
             # Copyright (C) 2012 Mustachioed Maven.
             echo "Running awesomeness..."
 
