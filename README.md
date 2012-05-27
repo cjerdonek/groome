@@ -49,8 +49,10 @@ directory of this repository.
 Advanced Example
 ----------------
 
-Here is an "advanced" example that contains both partials and lambdas
-(again, lambdas and partials are both optional).
+Here is an "advanced" example that illustrates all of the following:
+a partial, a unary lambda, and a nullary lambda (no arguments).
+
+Again, lambdas and partials are both optional.
 
     lambdas/
         now.sh
@@ -80,7 +82,7 @@ With context--
         "year": 2012
     }
 
-the template above yields--
+the template above yields (for example)--
 
     output/
         awesomeness.sh
