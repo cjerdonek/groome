@@ -1,6 +1,5 @@
 {
     "description": "A template directory that contains a directory.",
     "context": {
-        "foo": "bar"
     }
 }

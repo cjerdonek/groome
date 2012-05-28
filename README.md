@@ -50,7 +50,7 @@ Advanced Example
 ----------------
 
 Here is an "advanced" example that illustrates all of the following:
-a partial, a unary lambda, and a nullary lambda (no arguments).
+a partial, a lambda-valued variable, and a lambda-valued section.
 
 Again, lambdas and partials are both optional.
 
