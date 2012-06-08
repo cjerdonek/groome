@@ -1,31 +1,31 @@
-Groom
-=====
+Groome
+======
 
-![](http://github.com/cjerdonek/groom/raw/master/images/groom.png "mustache grooming")
+![](http://github.com/cjerdonek/groome/raw/master/images/mustache-groom.png "mustache grooming")
 
-[Groom](http://cjerdonek.github.com/groom/) is a dead-simple,
+[Groome](http://cjerdonek.github.com/groome/) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for language-agnostic
 project templates.
 
-A Groom template is just a directory of files (and subdirectories) containing
+A Groome template is just a directory of files (and subdirectories) containing
 a project structure, an optional directory of Mustache partials, and
 an optional directory of lambda shell scripts.
 
-A Groom implementation creates a new project by treating both the name and
+A Groome implementation creates a new project by treating both the name and
 contents of each file in the project directory as a Mustache template.
 A single [yaml](http://yaml.org/) or [json](http://www.json.org/)
 configuration file provides the context used to render each Mustache
 template (together with any lambdas).
 
 We encourage you to share your best-practice project structures with others
-as Groom templates.  Comments and suggestions on Groom are welcome on the
-project's GitHub [issues page](https://github.com/cjerdonek/groom/issues).
+as Groome templates.  Comments and suggestions on Groome are welcome on the
+project's GitHub [issues page](https://github.com/cjerdonek/groome/issues).
 
 
 Easy Example
 ------------
 
-Here is a "hello world" example.  The Groom template--
+Here is a "hello world" example.  The Groome template--
 
     project/
         {{project}}.sh.mustache
@@ -42,7 +42,7 @@ yields--
             echo "hello, world"
 
 This example can be found in the
-[tests/example_easy](https://github.com/cjerdonek/groom/tree/master/tests/example_easy)
+[tests/example_easy](https://github.com/cjerdonek/groome/tree/master/tests/example_easy)
 directory of this repository.
 
 
@@ -91,14 +91,14 @@ the template above yields (for example)--
             # Copyright (C) 2012 Mustachioed Maven.
             echo "Running awesomeness..."
 
-The [tests/example_hard](https://github.com/cjerdonek/groom/tree/master/tests/example_hard)
+The [tests/example_hard](https://github.com/cjerdonek/groome/tree/master/tests/example_hard)
 directory contains this example.
 
 
 Rules
 -----
 
-The rules for rendering the project directory of a Groom template are--
+The rules for rendering the project directory of a Groome template are--
 
 1.  All file names and directory names are treated as Mustache templates,
     after any pre-processing of the name described below.
@@ -121,14 +121,14 @@ The rules for rendering the project directory of a Groom template are--
 Templates
 ---------
 
-If you make a Groom template for others to download or fork, you can list it
-on the Groom project [wiki](https://github.com/cjerdonek/groom/wiki).
+If you make a Groome template for others to download or fork, you can list it
+on the Groome project [wiki](https://github.com/cjerdonek/groome/wiki).
 
-To simplify Groom template distribution, use, and discovery, we suggest that
-Groom template projects follow these conventions:
+To simplify Groome template distribution, use, and discovery, we suggest that
+Groome template projects follow these conventions:
 
-* Store groom templates in repositories with names prefixed by `groom-`
-  (for example `groom-python2and3-script`).
+* Store groome templates in repositories with names prefixed by `groome-`
+  (for example `groome-python2and3-script`).
 * Name the project structure directory `project`, the partials directory
   `partials`, and the lambda directory `lambdas`.
 * For documentation purposes, provide a sample context by providing a
@@ -144,27 +144,27 @@ Groom template projects follow these conventions:
 Implementations
 ---------------
 
-Groom implementations can also be listed on the wiki.
+Groome implementations can also be listed on the wiki.
 
 [Molt](http://cjerdonek.github.com/molt/), a Python implementation, is under
 construction and should be ready shortly.
 
 To assist implementations, this project has a
-[`tests` directory](https://github.com/cjerdonek/groom/tree/master/tests).
+[`tests` directory](https://github.com/cjerdonek/groome/tree/master/tests).
 This directory contains basic test cases to check isolated aspects
 of the rules above.  Implementations can include this project's
 Git repository as a [submodule](http://help.github.com/submodules/)
 to run these tests as part of a test harness.
 
 The test cases in the `tests` directory do not attempt to thoroughly test
-the Mustache implementation underlying a Groom implementation.  For that
+the Mustache implementation underlying a Groome implementation.  For that
 we recommend the [Mustache spec](https://github.com/mustache/spec).
 
 
 Author
 ------
 
-Groom is authored by [Chris Jerdonek](https://github.com/cjerdonek).  Chris is
+Groome is authored by [Chris Jerdonek](https://github.com/cjerdonek).  Chris is
 also the current [Pystache](https://github.com/defunkt/pystache) maintainer.
 
 
