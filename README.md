@@ -1,7 +1,8 @@
 Groome
 ======
 
-![](http://github.com/cjerdonek/groome/raw/master/images/mustache-groom.png "mustache grooming")
+![](http://github.com/cjerdonek/groome/raw/master/images/mustache-groom.png
+"grooming a mustache")
 
 [Groome](http://cjerdonek.github.com/groome/) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for language-agnostic
@@ -127,8 +128,9 @@ on the Groome project [wiki](https://github.com/cjerdonek/groome/wiki).
 To simplify Groome template distribution, use, and discovery, we suggest that
 Groome template projects follow these conventions:
 
-* Store groome templates in repositories with names prefixed by `groome-`
-  (for example `groome-python2and3-script`).
+* Store Groome templates in repositories with names prefixed by `groome-`
+  (for example `groome-python-script` for a project template for a Python
+  script).
 * Name the project structure directory `project`, the partials directory
   `partials`, and the lambda directory `lambdas`.
 * For documentation purposes, provide a sample context by providing a
