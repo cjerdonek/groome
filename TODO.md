@@ -1,5 +1,5 @@
 TODO
 ====
 
-* Move away from the "project" nomenclature in the command-line help.
+* rename project directories to structure.
 * improve picture.

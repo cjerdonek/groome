@@ -9,19 +9,16 @@ Groome
 directory templates (i.e. templates for directories of files and
 subdirectories).
 
-
-Why
----
-
 Project templates are the main use case.  You can use Groome templates to--
 
-* decrease the repetitive aspects of starting a new project, and
+* decrease the amount of repetition when starting a new project, and to
 * promote project structure best practices.
 
 For example, Groome templates can include initial boilerplate like a README,
 copyright notices, license info, logging configuration, test harness,
-packaging info, .gitignore, directory hierarchy, etc. -- all while customizing
-the boilerplate with things like the project name, author, year, etc.
+packaging info, `.gitignore`, directory hierarchy, etc. -- all while
+customizing the boilerplate with things like the project name, author,
+year, etc.
 
 We encourage you to share your best-practice project structures with others
 as Groome templates.
@@ -31,11 +28,11 @@ What
 ----
 
 A Groome template is just a directory of files (and subdirectories) containing
-a directory structure, an optional directory of Mustache partials, and
+the directory structure, an optional directory of Mustache partials, and
 an optional directory of lambda shell scripts.
 
-A Groome implementation creates a new project by treating both the name and
-contents of each file in the project directory as a Mustache template.
+A Groome implementation renders a Groome template by treating both the name
+and contents of each file in the directory structure as a Mustache template.
 A single [yaml](http://yaml.org/) or [json](http://www.json.org/)
 configuration file provides the context used to render each Mustache
 template (together with any lambdas).
@@ -49,7 +46,7 @@ Easy Example
 
 Here is a "hello world" example.  The Groome template--
 
-    project/
+    structure/
         {{project}}.sh.mustache
             echo "{{project}}, world"
 
@@ -87,7 +84,7 @@ Again, lambdas and partials are both optional.
     partials/
         copyright.mustache
             Copyright (C) {{year}} {{author}}.
-    project/
+    structure/
         {{project}}.sh.mustache
             #!/bin/bash
             {{#hash_comment}}
@@ -120,7 +117,7 @@ directory contains this example.
 Rules
 -----
 
-The rules for rendering the project directory of a Groome template are--
+The rules for rendering the structure directory of a Groome template are--
 
 1.  All file names and directory names are treated as Mustache templates,
     after any pre-processing of the name described below.
@@ -152,7 +149,7 @@ Groome template projects follow these conventions:
 * Store Groome templates in repositories with names prefixed by `groome-`
   (for example `groome-python-script` for a project template for a Python
   script).
-* Name the project structure directory `project`, the partials directory
+* Name the structure directory `structure`, the partials directory
   `partials`, and the lambda directory `lambdas`.
 * For documentation purposes, provide a sample context by providing a
   configuration file named `sample.json` or `sample.yaml`.  The file should
