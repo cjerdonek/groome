@@ -6,10 +6,32 @@ Groome
 
 [Groome](http://cjerdonek.github.com/groome/) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for language-agnostic
-project templates.
+directory templates (i.e. templates for directories of files and
+subdirectories).
+
+
+Why
+---
+
+Project templates are the main use case.  You can use Groome templates to--
+
+* decrease the repetitive aspects of starting a new project, and
+* promote project structure best practices.
+
+For example, Groome templates can include initial boilerplate like a README,
+copyright notices, license info, logging configuration, test harness,
+packaging info, .gitignore, directory hierarchy, etc. -- all while customizing
+the boilerplate with things like the project name, author, year, etc.
+
+We encourage you to share your best-practice project structures with others
+as Groome templates.
+
+
+What
+----
 
 A Groome template is just a directory of files (and subdirectories) containing
-a project structure, an optional directory of Mustache partials, and
+a directory structure, an optional directory of Mustache partials, and
 an optional directory of lambda shell scripts.
 
 A Groome implementation creates a new project by treating both the name and
@@ -18,8 +40,7 @@ A single [yaml](http://yaml.org/) or [json](http://www.json.org/)
 configuration file provides the context used to render each Mustache
 template (together with any lambdas).
 
-We encourage you to share your best-practice project structures with others
-as Groome templates.  Comments and suggestions on Groome are welcome on the
+Comments and suggestions on Groome are welcome on the
 project's GitHub [issues page](https://github.com/cjerdonek/groome/issues).
 
 
