@@ -21,7 +21,8 @@ customizing the boilerplate with things like the project name, author,
 year, etc.
 
 We encourage you to share your best-practice project structures with others
-as Groome templates.
+as Groome templates.  Comments and suggestions on Groome are welcome on the
+project's GitHub [issues page](https://github.com/cjerdonek/groome/issues).
 
 
 What
@@ -36,9 +37,6 @@ and contents of each file in the directory structure as a Mustache template.
 A single [yaml](http://yaml.org/) or [json](http://www.json.org/)
 configuration file provides the context used to render each Mustache
 template (together with any lambdas).
-
-Comments and suggestions on Groome are welcome on the
-project's GitHub [issues page](https://github.com/cjerdonek/groome/issues).
 
 
 Easy Example
