@@ -131,7 +131,7 @@ The rules for rendering the structure directory of a Groome template are--
     context, using the script's file name without the extension as the lambda's
     context key.
 6.  Lambdas used for sections should be treated as unary.
-7.  Input and output should be passed to lambdas as UTF-8 strings
+7.  Input and output should be passed to lambdas as UTF-8 encoded strings
     via `stdin` and `stdout`.
 
 
