@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Groome by cjerdonek</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Groome</h1>
+        <p>Language-agnostic project templates using Mustache</p>
+        <p class="view"><a href="https://github.com/cjerdonek/groome">View the Project on GitHub <small>cjerdonek/groome</small></a></p>
+        <ul>
+          <li><a href="https://github.com/cjerdonek/groome/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/cjerdonek/groome/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/cjerdonek/groome">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Groome</h1>
+
+<p><img src="http://github.com/cjerdonek/groome/raw/master/images/mustache-groom.png" alt="" title="grooming a mustache"></p>
+
+<p><a href="http://cjerdonek.github.com/groome/">Groome</a> is a dead-simple,
+<a href="http://mustache.github.com/">Mustache</a>-based standard for language-agnostic
+directory templates (i.e. templates for directories of files and
+subdirectories).</p>
+
+<p>Project templates are the main use case.  You can use Groome templates to--</p>
+
+<ul>
+<li>decrease the amount of repetition when starting new projects, and</li>
+<li>promote project structure best practices.</li>
+</ul><p>For example, a Groome template can include initial boilerplate like a README,
+copyright notices, license info, a <code>.gitignore</code>, logging configuration,
+a test harness, the directory hierarchy, packaging info, etc. -- all
+while customizing the boilerplate with things like the project name,
+author, year, etc.</p>
+
+<p>We encourage you to share your best-practice project structures with others
+as Groome templates.</p>
+
+<p>Comments and suggestions on Groome are welcome on the project's GitHub
+<a href="https://github.com/cjerdonek/groome/issues">issues page</a>.</p>
+
+<h2>What</h2>
+
+<p>A Groome template is just a directory of files (and subdirectories) containing
+the directory structure, an optional directory of Mustache partials, and
+an optional directory of lambda shell scripts.</p>
+
+<p>A Groome implementation renders a Groome template by treating both the name
+and contents of each file in the directory structure as a Mustache template.
+A single <a href="http://yaml.org/">yaml</a> or <a href="http://www.json.org/">json</a>
+configuration file provides the context used to render each Mustache
+template (together with any lambdas).</p>
+
+<h2>Easy Example</h2>
+
+<p>Here is a "hello world" example.  The Groome template--</p>
+
+<pre><code>structure/
+    {{project}}.sh.mustache
+        echo "{{project}}, world"
+</code></pre>
+
+<p>with context--</p>
+
+<pre><code>{ "project": "hello" }
+</code></pre>
+
+<p>yields--</p>
+
+<pre><code>output/
+    hello.sh
+        echo "hello, world"
+</code></pre>
+
+<p>This example can be found in the
+<a href="https://github.com/cjerdonek/groome/tree/master/tests/example_easy">tests/example_easy</a>
+directory of this repository.</p>
+
+<h2>Advanced Example</h2>
+
+<p>Here is an "advanced" example that illustrates all of the following:
+a partial, a lambda-valued variable, and a lambda-valued section.</p>
+
+<p>Again, lambdas and partials are both optional.</p>
+
+<pre><code>lambdas/
+    now.sh
+        #!/bin/bash
+        # The -n suppresses the trailing newline.
+        echo -n $(date)
+    hash_comment.sh
+        #!/bin/bash
+        while read line; do echo "# $line"; done
+partials/
+    copyright.mustache
+        Copyright (C) {{year}} {{author}}.
+structure/
+    {{project}}.sh.mustache
+        #!/bin/bash
+        {{#hash_comment}}
+        Project auto-generated at: {{now}}
+        {{&gt;copyright}}
+        {{/hash_comment}}
+        echo "Running {{project}}..."
+</code></pre>
+
+<p>With context--</p>
+
+<pre><code>{
+    "project": "awesomeness",
+    "author": "Mustachioed Maven",
+    "year": 2012
+}
+</code></pre>
+
+<p>the template above yields (for example)--</p>
+
+<pre><code>output/
+    awesomeness.sh
+        #!/bin/bash
+        # Project auto-generated at: Sun May 27 11:24:21 PDT 2012
+        # Copyright (C) 2012 Mustachioed Maven.
+        echo "Running awesomeness..."
+</code></pre>
+
+<p>The <a href="https://github.com/cjerdonek/groome/tree/master/tests/example_hard">tests/example_hard</a>
+directory contains this example.</p>
+
+<h2>Rules</h2>
+
+<p>The rules for rendering the structure directory of a Groome template are--</p>
+
+<ol>
+<li> All file names and directory names are treated as Mustache templates,
+after any pre-processing of the name described below.</li>
+<li> If a file name ends in <code>.mustache</code>, the trailing <code>.mustache</code> is stripped
+from the file name and the file contents treated as a Mustache template.</li>
+<li> To leave the contents of a Mustache file alone, end the file name in
+<code>.skip.mustache</code>.  For such files, the trailing <code>.skip.mustache</code> is
+changed to <code>.mustache</code> and the file contents are left unchanged.  This is
+the only exception to the previous rule.</li>
+<li> If a file name does not end in <code>.mustache</code>, the contents of the file
+are copied as is and not treated as a Mustache template.</li>
+<li> Each provided lambda script should be added to the initial rendering
+context, using the script's file name without the extension as the lambda's
+context key.</li>
+<li> Lambdas used for sections should be treated as unary.</li>
+<li> Input and output should be passed to lambdas as UTF-8 encoded strings
+via <code>stdin</code> and <code>stdout</code>.</li>
+</ol><h2>Templates</h2>
+
+<p>If you make a Groome template for others to download or fork, you can list it
+on the Groome project <a href="https://github.com/cjerdonek/groome/wiki">wiki</a>.</p>
+
+<p>To simplify Groome template distribution, use, and discovery, we suggest that
+Groome template projects follow these conventions:</p>
+
+<ul>
+<li>Store Groome templates in repositories with names prefixed by <code>groome-</code>
+(for example <code>groome-python-script</code> for a project template for a Python
+script).</li>
+<li>Name the structure directory <code>structure</code>, the partials directory
+<code>partials</code>, and the lambda directory <code>lambdas</code>.</li>
+<li>For documentation purposes, provide a sample context by providing a
+configuration file named <code>sample.json</code> or <code>sample.yaml</code>.  The file should
+contain a name-value collection with the sample context as the value of
+the key <code>context</code>.  This allows additional metadata to be included in
+the configuration file, without risk of key collisions with context data.</li>
+<li>Rendering the template with the sample context should provide an
+application that is "runnable" out of the box (for testing and
+demonstration purposes).</li>
+</ul><h2>Implementations</h2>
+
+<p>Groome implementations can also be listed on the wiki.</p>
+
+<p><a href="http://cjerdonek.github.com/molt/">Molt</a>, a Python implementation, is under
+construction and should be ready shortly.</p>
+
+<p>To assist implementations, this project has a
+<a href="https://github.com/cjerdonek/groome/tree/master/tests"><code>tests</code> directory</a>.
+This directory contains basic test cases to check isolated aspects
+of the rules above.  Implementations can include this project's
+Git repository as a <a href="http://help.github.com/submodules/">submodule</a>
+to run these tests as part of a test harness.</p>
+
+<p>The test cases in the <code>tests</code> directory do not attempt to thoroughly test
+the Mustache implementation underlying a Groome implementation.  For that
+we recommend the <a href="https://github.com/mustache/spec">Mustache spec</a>.</p>
+
+<h2>Author</h2>
+
+<p>Groome is authored by <a href="https://github.com/cjerdonek">Chris Jerdonek</a>.  Chris is
+also the current <a href="https://github.com/defunkt/pystache">Pystache</a> maintainer.</p>
+
+<h2>Copyright</h2>
+
+<p>Copyright (C) 2012 Chris Jerdonek.  All rights reserved.</p>
+
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:</p>
+
+<ul>
+<li>Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.</li>
+<li>The names of the copyright holders may not be used to endorse or promote
+products derived from this software without specific prior written
+permission.</li>
+</ul><p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/cjerdonek">cjerdonek</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
