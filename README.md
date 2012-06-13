@@ -23,7 +23,7 @@ author, year, etc.
 We encourage you to share your best-practice project structures with others
 as Groome templates.
 
-Comments and suggestions on Groome are welcome on the project's GitHub
+Comments and suggestions are welcome on the project's GitHub
 [issues page](https://github.com/cjerdonek/groome/issues).
 
 
