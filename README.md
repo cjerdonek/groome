@@ -11,18 +11,20 @@ subdirectories).
 
 Project templates are the main use case.  You can use Groome templates to--
 
-* decrease the amount of repetition when starting a new project, and to
+* decrease the amount of repetition when starting new projects, and
 * promote project structure best practices.
 
-For example, Groome templates can include initial boilerplate like a README,
-copyright notices, license info, logging configuration, test harness,
-packaging info, `.gitignore`, directory hierarchy, etc. -- all while
-customizing the boilerplate with things like the project name, author,
-year, etc.
+For example, a Groome template can include initial boilerplate like a README,
+copyright notices, license info, a `.gitignore`, logging configuration,
+a test harness, the directory hierarchy, packaging info, etc. -- all
+while customizing the boilerplate with things like the project name,
+author, year, etc.
 
 We encourage you to share your best-practice project structures with others
-as Groome templates.  Comments and suggestions on Groome are welcome on the
-project's GitHub [issues page](https://github.com/cjerdonek/groome/issues).
+as Groome templates.
+
+Comments and suggestions on Groome are welcome on the project's GitHub
+[issues page](https://github.com/cjerdonek/groome/issues).
 
 
 What
