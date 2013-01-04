@@ -73,17 +73,6 @@ a partial, a lambda-valued variable, and a lambda-valued section.
 
 Again, lambdas and partials are both optional.
 
-    lambdas/
-        now.sh
-            #!/bin/bash
-            # The -n suppresses the trailing newline.
-            echo -n $(date)
-        hash_comment.sh
-            #!/bin/bash
-            while read line; do echo "# $line"; done
-    partials/
-        copyright.mustache
-            Copyright (C) {{year}} {{author}}.
     structure/
         {{project}}.sh.mustache
             #!/bin/bash
@@ -92,6 +81,17 @@ Again, lambdas and partials are both optional.
             {{>copyright}}
             {{/hash_comment}}
             echo "Running {{project}}..."
+    partials/
+        copyright.mustache
+            Copyright (C) {{year}} {{author}}.
+    lambdas/
+        now.sh
+            #!/bin/bash
+            # The -n suppresses the trailing newline.
+            echo -n $(date)
+        hash_comment.sh
+            #!/bin/bash
+            while read line; do echo "# $line"; done
 
 With context--
 
@@ -149,8 +149,6 @@ Groome template projects follow these conventions:
 * Store Groome templates in repositories with names prefixed by `groome-`
   (for example `groome-python-script` for a project template for a Python
   script).
-* Name the structure directory `structure`, the partials directory
-  `partials`, and the lambda directory `lambdas`.
 * For documentation purposes, provide a sample context by providing a
   configuration file named `sample.json` or `sample.yaml`.  The file should
   contain a name-value collection with the sample context as the value of
@@ -159,6 +157,12 @@ Groome template projects follow these conventions:
 * Rendering the template with the sample context should provide an
   application that is "runnable" out of the box (for testing and
   demonstration purposes).
+* Name the subdirectories as follows:
+  * `structure/` the template files, etc.
+  * `partials/` the template partials, if any.
+  * `lambdas/` the lambda scripts, if any.
+  * `expected/` the result of rendering the Groome template against the
+    sample context file.
 
 
 Implementations
