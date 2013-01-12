@@ -7,15 +7,16 @@ Groome
 [Groome](http://cjerdonek.github.com/groome/) is a dead-simple,
 [Mustache](http://mustache.github.com/)-based standard for language-agnostic
 directory templates (i.e. templates for directories of files and
-subdirectories).
+subdirectories).  [Molt](https://github.com/cjerdonek/molt) is the initial
+reference implementation.
 
 Project templates are the main use case.  You can use Groome templates to--
 
-* decrease the amount of repetition when starting new projects, and
-* promote project structure best practices.
+* reduce the time to start new projects by eliminating repetitive work, and
+* share and encourage project structure best practices.
 
 For example, a Groome template can include initial boilerplate for things
-like the README, copyright notices, license info, `.gitignore`, logging
+like a README, copyright notices, license info, `.gitignore`, logging
 configuration, test harness, directory hierarchy, packaging info, etc. --
 all while customizing the boilerplate with project-specific information
 like the project name, author, year, etc.
